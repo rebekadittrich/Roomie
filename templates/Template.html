@@ -3,28 +3,52 @@
 <head>
     <style>
         body {
-        color: #6C5B7B;
-        background-color: #C06C84;
+        color: #2E122D;
+        background-color: rgba(192, 108, 132, 0.5);
+        background-image: url("static/forest.jpg");
         }
         table {
         border-collapse: collapse;
+        border: 15 px solid black;
         width: 60%;
+        background-color: #C06C84;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 60 px;
         }
         th {
         height: 50px;
         }
         .firstrow {
         text-align: center;
+        background-color: rgb(125, 5, 51);
+        }
+        .otherrows {
+        text-align: center;
+        }
+        th, td {
+        padding: 8px;
         }
         tr:hover{background-color:#F8B195}
+        .maintitle {
+        text-align: center;
+        font-size: 60px;
+        }
     </style>
     <meta charset="UTF-8">
     <title>Roomie</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
+<br>
+<br>
+<br>
+<div class="maintitle">
+    <h>roomie</h>
+</div>
+<br>
+<br>
+<br>
 <table class="table table-condensed">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <div class="firstrow">
         <tr>
             <th>Name</th>
@@ -33,15 +57,16 @@
             <th>Occupation</th>
         </tr>
     </div>
-    {% for row in rows %}
-    <tr>
-        <td>{{row.name}}</td>
-        <td>{{row.capacity}}</td>
-        <td>{{row.area}}</td>
-        <td>{{row.occupied}}</td>
-    </tr>
-    {% endfor %}
+    <div class="otherrows">
+        {% for row in rows %}
+        <tr>
+            <td>    {{row.name}}</td>
+            <td>{{row.capacity}}</td>
+            <td>{{row.area}}</td>
+            <td>{{row.occupied}}</td>
+        </tr>
+        {% endfor %}
+    </div>
 </table>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>
