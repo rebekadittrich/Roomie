@@ -12,12 +12,12 @@
         <th>Area</th>
         <th>Occupation</th>
     </tr>
-    {% for roomtable[i] in roomtable %}
+    {% for row in rows %}
     <tr>
-        <td>{{roomtable.name}}</td>
-        <td>{{roomtable.capacity}}</td>
-        <td>{{roomtable.area}}</td>
-        <td>{{roomtable.occupied}}</td>
+        <td>{{row.name}}</td>
+        <td>{{row.capacity}}</td>
+        <td>{{row.area}}</td>
+        <td>{{row.occupied}}</td>
     </tr>
     {% endfor %}
 </table>
