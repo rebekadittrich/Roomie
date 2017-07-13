@@ -7,17 +7,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{cwd}/test.db'.format(cwd=os.
 db = SQLAlchemy(app)
 
 
-@app.route("/")
-def index():
-    rows = Room.query.all()
-    return render_template('Template.html', rows=rows)
-
-
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host="0.0.0.0", port=port)
-
-
 class Room(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True)
@@ -35,3 +24,15 @@ class Room(db.Model):
         return 'Room {name}'.format(
             name=self.name
         )
+
+
+@app.route("/")
+def index():
+    rows = Room.query.all()
+    return render_template('Template.html', rows=rows)
+
+
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host="0.0.0.0", port=port)
+
