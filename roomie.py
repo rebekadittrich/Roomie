@@ -10,7 +10,7 @@ db = SQLAlchemy(app)
 @app.route("/")
 def template_test():
     roomtable = Room.query.all()
-    return render_template('Template.html', roomtable = roomtable )
+    return render_template('Template.html', roomtables = roomtable )
 
 
 if __name__ == '__main__':
