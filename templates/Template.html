@@ -5,6 +5,21 @@
     <title>Roomie</title>
 </head>
 <body>
-<p>{{koszontes}}</p>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Capacity</th>
+        <th>Area</th>
+        <th>Occupation</th>
+    </tr>
+    {% for roomtable.id in roomtable %}
+    <tr>
+        <td>{{roomtable.name}}</td>
+        <td>{{roomtable.capacity}}</td>
+        <td>{{roomtable.area}}</td>
+        <td>{{roomtable.occupied}}</td>
+    </tr>
+    {% endfor %}
+</table>
 </body>
 </html>
