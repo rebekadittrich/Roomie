@@ -10,8 +10,9 @@
         table {
         border-collapse: collapse;
         border: 15 px solid black;
-        width: 60%;
         background-color: #C06C84;
+        background-color: rgba(192, 108, 132, 0.65);
+        width: 60%;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 60 px;
@@ -29,10 +30,51 @@
         th, td {
         padding: 8px;
         }
-        tr:hover{background-color:#F8B195}
+        tr:hover{background-color: rgba(252, 108, 71, 0.55)}
         .maintitle {
         text-align: center;
         font-size: 60px;
+        }
+        #custom-search-form {
+        margin:0 auto;
+        margin-top: 5px;
+        padding: 0;
+        }
+        #custom-search-form .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        margin:0 auto;
+        }
+        #custom-search-form button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: center;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        margin-left: auto;
+        margin-right: auto;
+        margin:0 auto;
+        }
+
+        .search-query:focus + button {
+        z-index: 3;
+        margin:0 auto;
+        }
+        .searchinthemiddle {
+        margin:0 auto;
         }
     </style>
     <meta charset="UTF-8">
@@ -46,7 +88,20 @@
     <h>roomie</h>
 </div>
 <br>
-<br>
+<div class="searchinthemiddle"
+    <div class="container">
+	    <div class="row">
+            <div class="span12">
+                <form id="custom-search-form" action="/" method="get" class="form-search form-horizontal pull-right">
+                    <div class="input-append span12">
+                        <input type="text" name="searchParam" class="search-query" placeholder="Search">
+                        <button type="submit" class="btn"><i class="icon-search"></i></button>
+                    </div>
+                </form>
+            </div>
+	    </div>
+    </div>
+</div>
 <br>
 <table class="table table-condensed">
     <div class="firstrow">
@@ -68,5 +123,8 @@
         {% endfor %}
     </div>
 </table>
+<br>
+<br>
+<br>
 </body>
 </html>

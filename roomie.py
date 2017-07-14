@@ -1,6 +1,7 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+import json
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{cwd}/test.db'.format(cwd=os.getcwd())
@@ -25,11 +26,36 @@ class Room(db.Model):
             name=self.name
         )
 
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "area": self.area,
+            "capacity": self.capacity,
+            "occupied": self.occupied
+        }
+
 
 @app.route("/")
 def index():
-    rows = Room.query.all()
+    searchParam = request.args.get('searchParam')
+    if searchParam is None:
+        rows = Room.query.all()
+    else:
+        rows = Room.query.filter(
+            (Room.name == searchParam) |
+            (Room.area == searchParam) |
+            (Room.capacity >= searchParam)
+        )
     return render_template('Template.html', rows=rows)
+
+@app.route("/a")
+def dict_to_json():
+    room_dicts = []
+    for room in Room.query.all():
+        room_dicts.append(
+            room.to_dict()
+        )
+    return json.dumps(room_dicts)
 
 
 if __name__ == '__main__':
