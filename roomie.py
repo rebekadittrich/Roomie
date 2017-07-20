@@ -43,6 +43,7 @@ class Route(db.Model):
         self.fromid = fromid
         self.toid = toid
         self.desc = desc
+
     def __repr__(self):
         return 'Route {desc}'.format(
             desc=self.desc
