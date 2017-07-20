@@ -59,6 +59,7 @@ class Route(db.Model):
 
 @app.route("/")
 def index():
+    tofromurl = request.args.get('searchTo')
     searchParam = request.args.get('searchParam')
     if searchParam is None:
         rows = Room.query.all()
@@ -68,7 +69,7 @@ def index():
             (Room.area == searchParam) |
             (Room.capacity >= searchParam)
         )
-    return render_template('Template.html', rows=rows)
+    return render_template('Template.html', rows=rows, tofromurl=tofromurl)
 
 @app.route("/description")
 

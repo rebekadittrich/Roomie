@@ -108,7 +108,7 @@
         {% endfor %}
     </select>
 
-    <select class="selectpicker" data-live-search="true" title="To">
+    <select class="selectpicker" data-live-search="true" title="To" id="pick-to">
         {% for row in rows %}
             <option data-subtext={{row.area}}>{{row.name}}</option>
         {% endfor %}
@@ -182,10 +182,18 @@ function hammm() {
             from = $(this).find("option:selected").val();
         });
 
+        $('#pick-to').on('change', function () {
+            from = $(this).find("option:selected").val();
+        });
+
         $('#searchbutton').on('click', function (e) {
             e.preventDefault();
             console.log(from)
+            console.log(to)
         });
+
+        $('#pick-to').selectpicker('val', tofromurl);
+        $('#pick-from').selectpicker('val', fromfromurl);
 
         var e = document.getElementById("from1");
         var strUser = e.options[e.selectedIndex].text;
