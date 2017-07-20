@@ -207,14 +207,15 @@ function hammm() {
         $('#searchbutton').on('click', function (e) {
             e.preventDefault();
             var searchingurl1 = initialurl.concat(from);
-            var searchingurl = searchingurl1.concat(to);
+            var searchingurl2 = searchingurl1.concat(addurl);
+            var searchingurl = searchingurl2.concat(to);
             window.location.href = searchingurl;
             console.log(from)
             console.log(to)
         });
         $('#pick-to').selectpicker('val', searchTo);
 
-        var e = document.getElementById("from1");
+        var e = document.getElementById("from");
         var strUser = e.options[e.selectedIndex].text;
     </script>
 </body>
