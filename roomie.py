@@ -69,7 +69,7 @@ def index():
             (Room.area == searchParam) |
             (Room.capacity >= searchParam)
         )
-    return render_template('Template.html', rows=rows, tofromurl=tofromurl)
+    return render_template('Template.html', rows=rows, tofromurl=request.args.get('searchTo'))
 
 @app.route("/description")
 
