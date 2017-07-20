@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b0a5f93-48f5-4891-a902-1c5211d180ea" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Template2.html" afterPath="$PROJECT_DIR$/templates/Template2.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.db" afterPath="$PROJECT_DIR$/test.db" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
