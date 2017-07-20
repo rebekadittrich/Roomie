@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/css/bootstrap-select.min.css">
     <title>Roomie</title>
     <style>
         body {
@@ -85,11 +84,6 @@
         .searchinthemiddle {
         margin:0 auto;
         }
-        .selectpicker {
-        }
-        .searchingfields {
-        text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -100,58 +94,7 @@
     <h>roomie</h>
 </div>
 <br>
-<br>
-<div class="searchingfields">
-    <select class="selectpicker" data-live-search="true" title="From" id="pick-from">
-        {% for row in rows %}
-            <option data-subtext={{row.area}}>{{row.name}}</option>
-        {% endfor %}
-    </select>
-
-    <select class="selectpicker" data-live-search="true" title="To">
-        {% for row in rows %}
-            <option data-subtext={{row.area}}>{{row.name}}</option>
-        {% endfor %}
-    </select>
-    <button type="button" class="btn btn-default" aria-label="Left Align">
-        <!-- <a class="glyphicon glyphicon-search" aria-hidden="true" href="http://127.0.0.1:5000/"></a> -->
-        <a class="glyphicon glyphicon-search" id="searchbutton" aria-hidden="true"></a>
-    </button>
-
-</div>
-<script>
-function hammm() {
-    document.getElementById("demo").innerHTML = {{strUser}};
-}
-</script>
-<br>
-<br>
-<br>
-<br>
-
-<table class="table table-condensed">
-    <div class="firstrow">
-        <tr>
-            <th>Name</th>
-            <th>Capacity</th>
-            <th>Area</th>
-            <th>Occupation</th>
-        </tr>
-    </div>
-    <div class="otherrows">
-        {% for row in rows %}
-        <tr>
-            <td>    {{row.name}}</td>
-            <td>{{row.capacity}}</td>
-            <td>{{row.area}}</td>
-            <td>{{row.occupied}}</td>
-        </tr>
-        {% endfor %}
-    </div>
-</table>
-<br>
-<br>
-<div class="searchinthemiddle">
+<div class="searchinthemiddle"
     <div class="container">
 	    <div class="row">
             <div class="span12">
@@ -166,29 +109,17 @@ function hammm() {
     </div>
 </div>
 <br>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
-  <script type="text/javascript">
-        var from = 'eames';
-        var to = 'spline';
-        // console.log(window.location.search)
-
-        $('.selectpicker').selectpicker({
-          size: 4
-        });
-
-        $('#pick-from').on('change', function () {
-            from = $(this).find("option:selected").val();
-        });
-
-        $('#searchbutton').on('click', function (e) {
-            e.preventDefault();
-            console.log(from)
-        });
-
-        var e = document.getElementById("from1");
-        var strUser = e.options[e.selectedIndex].text;
-    </script>
+<select class="selectpicker" multiple data-live-search="true">
+  <option>Mustard</option>
+  <option>Ketchup</option>
+  <option>Relish</option>
+</select>
+<br>
+<br>
+<br>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+

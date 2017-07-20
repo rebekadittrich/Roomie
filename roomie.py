@@ -34,6 +34,28 @@ class Room(db.Model):
             "occupied": self.occupied
         }
 
+class Route(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    fromid = db.Column(db.Integer)
+    toid = db.Column(db.Integer)
+    desc = db.Column(db.String(3000))
+
+    def __init__(self, fromid, toid, desc):
+        self.fromid = fromid
+        self.toid = toid
+        self.desc = desc
+
+    def __repr__(self):
+        return 'Route {fromid}'.format(
+            name=self.fromid
+        )
+
+    def to_dict(self):
+        return {
+            "fromid": self.fromid,
+            "toid": self.toid,
+            "desc": self.desc
+        }
 
 @app.route("/")
 def index():
@@ -47,6 +69,9 @@ def index():
             (Room.capacity >= searchParam)
         )
     return render_template('Template.html', rows=rows)
+
+@app.route("/description")
+
 
 @app.route("/a")
 def dict_to_json():
