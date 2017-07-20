@@ -183,7 +183,7 @@ function hammm() {
         });
 
         $('#pick-to').on('change', function () {
-            from = $(this).find("option:selected").val();
+            to = $(this).find("option:selected").val();
         });
 
         $('#searchbutton').on('click', function (e) {
@@ -191,7 +191,6 @@ function hammm() {
             console.log(from)
             console.log(to)
         });
-
         $('#pick-to').selectpicker('val', tofromurl);
         $('#pick-from').selectpicker('val', fromfromurl);
 
