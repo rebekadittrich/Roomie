@@ -63,23 +63,21 @@ def index():
         )
     return render_template('Template.html', rows=rows, searchTo=request.args.get('searchTo'))
 
+
 @app.route("/direction/")
 def route():
     searchFrom = request.args.get('searchFrom')
     searchTo = request.args.get('searchTo')
 
-    for room in Room.query.all():
-        if searchFrom == room:
-            fromname = Room.query.filter_by(name=room).first()
-            fromnameid = Route.query.filter_by(fromid=fromname.id)
+    from_room = Room.query.filter_by(name=searchFrom)[0]
+    to_room = Room.query.filter_by(name=searchTo)[0]
 
-        if searchTo == room:
-            toname = Room.query.filter_by(name=room).first()
-            tonameid = Route.query.filter_by(toid=toname.id)
+    route = Route.query.filter_by(
+        fromid=from_room.id,
+        toid=to_room.id
+    )[0]
 
-    routeid = Route.query.filter_by(id=list(set(fromnameid).intersection(tonameid)))
-    alma = routeid.desc
-    return alma
+    return route.desc
 
 @app.route("/a")
 def dict_to_json():
