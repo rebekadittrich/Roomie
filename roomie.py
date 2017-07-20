@@ -78,8 +78,8 @@ def route():
             tonameid = Route.query.filter_by(toid=toname.id)
 
     routeid = Route.query.filter_by(id=list(set(fromnameid).intersection(tonameid)))
-
-    return routeid.desc
+    alma = routeid.desc
+    return alma
 
 @app.route("/a")
 def dict_to_json():
