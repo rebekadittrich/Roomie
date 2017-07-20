@@ -194,17 +194,17 @@ function hammm() {
         });
 
         $('#pick-from').on('change', function () {
-            from = $(this).find("option:selected").val();
+            from1 = $(this).find("option:selected").val();
         });
 
         $('#pick-to').on('change', function () {
-            to = $(this).find("option:selected").val();
+            to1 = $(this).find("option:selected").val();
         });
 
         var initialurl = 'https://roomieapp.herokuapp.com/?searchFrom=';
-        var searchingurl1 = initialurl.concat(from);
+        var searchingurl1 = initialurl.concat(from1);
         var addurl = '&searchTo=';
-        var searchingurl = searchingurl1.concat(to);
+        var searchingurl = searchingurl1.concat(to1);
 
         $('#searchbutton').on('click', function (e) {
             e.preventDefault();
