@@ -59,17 +59,17 @@ class Route(db.Model):
 
 @app.route("/")
 def index():
-    tofromurl = request.args.get('searchTo')
+    searchTo = request.args.get('searchTo')
     searchParam = request.args.get('searchParam')
-    if searchParam is None:
+    if searchTo is None:
         rows = Room.query.all()
     else:
         rows = Room.query.filter(
-            (Room.name == searchParam) |
-            (Room.area == searchParam) |
-            (Room.capacity >= searchParam)
+            (Room.name == searchTo) |
+            (Room.area == searchTo) |
+            (Room.capacity >= searchTo)
         )
-    return render_template('Template.html', rows=rows, tofromurl=request.args.get('searchTo'))
+    return render_template('Template.html', rows=rows, searchTo=request.args.get('searchTo'))
 
 @app.route("/description")
 
