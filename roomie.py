@@ -73,8 +73,9 @@ def index():
 
 @app.route("/direction/")
 def route():
-    searchTo = request.args.get('searchTo')
     searchFrom = request.args.get('searchFrom')
+    searchTo = request.args.get('searchTo')
+
     for room in Room.query.all():
         if searchFrom == room:
             fromname = Room.query.filter_by(name=room).first()
@@ -82,7 +83,7 @@ def route():
 
         if searchTo == room:
             toname = Room.query.filter_by(name=room).first()
-            tonameid = Route.query.filter_by(fromid=toname.id)
+            tonameid = Route.query.filter_by(toid=toname.id)
     routeid = Route.query.filter_by(id=list(set(fromnameid).intersection(tonameid)))
 
     return routeid.desc
