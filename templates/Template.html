@@ -172,7 +172,8 @@ function hammm() {
   <script type="text/javascript">
         var from = 'eames';
         var to = 'spline';
-        to = tofromurl
+        var url = window.location.href;
+
         // console.log(window.location.search)
 
         $('.selectpicker').selectpicker({
@@ -192,8 +193,7 @@ function hammm() {
             console.log(from)
             console.log(to)
         });
-        $('#pick-to').selectpicker('val', tofromurl);
-        $('#pick-from').selectpicker('val', fromfromurl);
+        $('#pick-to').selectpicker('val', 'cinema');
 
         var e = document.getElementById("from1");
         var strUser = e.options[e.selectedIndex].text;
