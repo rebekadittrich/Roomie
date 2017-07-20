@@ -71,8 +71,21 @@ def index():
         )
     return render_template('Template.html', rows=rows, searchTo=request.args.get('searchTo'))
 
-@app.route("/description/")
+@app.route("/direction/")
+def route():
+    searchTo = request.args.get('searchTo')
+    searchFrom = request.args.get('searchFrom')
+    for room in Room.query.all():
+        if searchFrom == room:
+            fromname = Room.query.filter_by(name=room).first()
+            fromnameid = Route.query.filter_by(fromid=fromname.id)
 
+        if searchTo == room:
+            toname = Room.query.filter_by(name=room).first()
+            tonameid = Route.query.filter_by(fromid=toname.id)
+    routeid = Route.query.filter_by(id=list(set(fromnameid).intersection(tonameid)))
+
+    return routeid.desc
 
 @app.route("/a")
 def dict_to_json():
