@@ -25,7 +25,6 @@ class Room(db.Model):
         return 'Room {name}'.format(
             name=self.name
         )
-
     def to_dict(self):
         return {
             "name": self.name,
@@ -44,18 +43,11 @@ class Route(db.Model):
         self.fromid = fromid
         self.toid = toid
         self.desc = desc
-
     def __repr__(self):
-        return 'Route {fromid}'.format(
-            name=self.fromid
+        return 'Route {desc}'.format(
+            desc=self.desc
         )
 
-    def to_dict(self):
-        return {
-            "fromid": self.fromid,
-            "toid": self.toid,
-            "desc": self.desc
-        }
 
 
 @app.route("/")
@@ -84,6 +76,7 @@ def route():
         if searchTo == room:
             toname = Room.query.filter_by(name=room).first()
             tonameid = Route.query.filter_by(toid=toname.id)
+
     routeid = Route.query.filter_by(id=list(set(fromnameid).intersection(tonameid)))
 
     return routeid.desc
