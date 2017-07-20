@@ -57,9 +57,9 @@ class Route(db.Model):
             "desc": self.desc
         }
 
+
 @app.route("/")
 def index():
-    searchTo = request.args.get('searchTo')
     searchParam = request.args.get('searchParam')
     if searchParam is None:
         rows = Room.query.all()
@@ -71,7 +71,7 @@ def index():
         )
     return render_template('Template.html', rows=rows, searchTo=request.args.get('searchTo'))
 
-@app.route("/description")
+@app.route("/description/")
 
 
 @app.route("/a")
