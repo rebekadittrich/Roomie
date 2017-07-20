@@ -61,13 +61,13 @@ class Route(db.Model):
 def index():
     searchTo = request.args.get('searchTo')
     searchParam = request.args.get('searchParam')
-    if searchTo is None:
+    if searchParam is None:
         rows = Room.query.all()
     else:
         rows = Room.query.filter(
-            (Room.name == searchTo) |
-            (Room.area == searchTo) |
-            (Room.capacity >= searchTo)
+            (Room.name == searchParam) |
+            (Room.area == searchParam) |
+            (Room.capacity >= searchParam)
         )
     return render_template('Template.html', rows=rows, searchTo=request.args.get('searchTo'))
 

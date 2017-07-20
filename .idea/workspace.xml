@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b0a5f93-48f5-4891-a902-1c5211d180ea" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/roomie.py" afterPath="$PROJECT_DIR$/roomie.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Template.html" afterPath="$PROJECT_DIR$/templates/Template.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +18,8 @@
       <file leaf-file-name="roomie.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/roomie.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="71" column="82" lean-forward="false" selection-start-line="71" selection-start-column="82" selection-end-line="71" selection-end-column="82" />
+            <state relative-caret-position="245">
+              <caret line="68" column="40" lean-forward="true" selection-start-line="68" selection-start-column="40" selection-end-line="68" selection-end-column="40" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -69,8 +70,8 @@
       <file leaf-file-name="Template.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/Template.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="602">
-              <caret line="203" column="7" lean-forward="true" selection-start-line="203" selection-start-column="7" selection-end-line="203" selection-end-column="7" />
+            <state relative-caret-position="255">
+              <caret line="187" column="30" lean-forward="true" selection-start-line="187" selection-start-column="30" selection-end-line="187" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -735,8 +736,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/roomie.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="71" column="82" lean-forward="false" selection-start-line="71" selection-start-column="82" selection-end-line="71" selection-end-column="82" />
+        <state relative-caret-position="245">
+          <caret line="68" column="40" lean-forward="true" selection-start-line="68" selection-start-column="40" selection-end-line="68" selection-end-column="40" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -745,8 +746,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/Template.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="203" column="7" lean-forward="true" selection-start-line="203" selection-start-column="7" selection-end-line="203" selection-end-column="7" />
+        <state relative-caret-position="255">
+          <caret line="187" column="30" lean-forward="true" selection-start-line="187" selection-start-column="30" selection-end-line="187" selection-end-column="30" />
           <folding />
         </state>
       </provider>

@@ -170,9 +170,20 @@ function hammm() {
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
   <script type="text/javascript">
-        var from = 'eames';
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+            }
+        return(false);
+        }
+        searchTo = getQueryVariable("searchTo")
+
+        var from = 'Eames';
         var to = 'spline';
-        var url = window.location.hash;
+
 
         console.log(searchTo);
 
