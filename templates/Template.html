@@ -210,14 +210,16 @@
             var searchingurl1 = initialurl.concat(from);
             var searchingurl2 = searchingurl1.concat(addurl);
             var searchingurl = searchingurl2.concat(to);
-            window.location.href = window.location.origin + searchingurl;
+
+            $.get(window.location.origin + searchingurl, function (d) {
+                console.log(d)
+            })
+
             console.log(from)
             console.log(to)
         });
         $('#pick-to').selectpicker('val', searchTo);
 
-        var e = document.getElementById("from");
-        var strUser = e.options[e.selectedIndex].text;
     </script>
 </body>
 </html>
