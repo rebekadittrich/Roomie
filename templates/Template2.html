@@ -162,3 +162,43 @@ db.session.add(Room('Stretch', 'Values', 12))
         return 'Route {fromid}'.format(
             fromid=self.fromid
         )
+
+<!--
+<table class="table table-condensed">
+    <div class="firstrow">
+        <tr>
+            <th>Name</th>
+            <th>Capacity</th>
+            <th>Area</th>
+            <th>Occupation</th>
+        </tr>
+    </div>
+    <div class="otherrows">
+        {% for row in rows %}
+        <tr>
+            <td>    {{row.name}}</td>
+            <td>{{row.capacity}}</td>
+            <td>{{row.area}}</td>
+            <td>{{row.occupied}}</td>
+        </tr>
+        {% endfor %}
+    </div>
+</table>
+
+<br>
+<br>
+<div class="searchinthemiddle">
+    <div class="container">
+	    <div class="row">
+            <div class="span12">
+                <form id="custom-search-form" action="/" method="get" class="form-search form-horizontal pull-right">
+                    <div class="input-append span12">
+                        <input type="text" name="searchParam" class="search-query" placeholder="Search">
+                        <button type="submit" class="btn"><i class="icon-search"></i></button>
+                    </div>
+                </form>
+            </div>
+	    </div>
+    </div>
+</div>
+-->

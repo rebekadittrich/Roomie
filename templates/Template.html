@@ -7,169 +7,173 @@
     <title>Roomie</title>
     <style>
         body {
-        color: #2E122D;
-        background-color: rgba(192, 108, 132, 0.5);
-        background-image: url("static/forest.jpg");
+            color: #2E122D;
+            background-color: rgba(192, 108, 132, 0.5);
+            background-image: url("static/forest.jpg");
         }
+
         @font-face {
-        font-family: Bungee-Shade;
-        src: url("static/Bungee-Shade.woff");
+            font-family: Bungee-Shade;
+            src: url("static/Bungee-Shade.woff");
         }
+
         table {
-        border-collapse: collapse;
-        border: 15 px solid black;
-        background-color: #C06C84;
-        background-color: rgba(192, 108, 132, 0.65);
-        width: 60%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 60 px;
+            border-collapse: collapse;
+            border: 15 px solid black;
+            background-color: #C06C84;
+            background-color: rgba(192, 108, 132, 0.65);
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 60 px;
         }
+
         th {
-        height: 50px;
+            height: 50px;
         }
+
         .firstrow {
-        text-align: center;
-        background-color: rgb(125, 5, 51);
+            text-align: center;
+            background-color: rgb(125, 5, 51);
         }
+
         .otherrows {
-        text-align: center;
+            text-align: center;
         }
+
         th, td {
-        padding: 8px;
+            padding: 8px;
         }
-        tr:hover{background-color: rgba(252, 108, 71, 0.55)}
+
+        tr:hover{
+            background-color: rgba(252, 108, 71, 0.55)
+        }
+
         .maintitle {
-        text-align: center;
-        font-family: Bungee-Shade;
-        font-size: 60px;
+            text-align: center;
+            margin-top: 60px;
+            font-family: Bungee-Shade;
+            font-size: 60px;
+            margin-left: auto;
         }
+
+        .maintitle-small {
+            transition: font-size .5s;
+            font-size: 24px;
+            text-align: left;
+            margin-left: 40px;
+        }
+
         #custom-search-form {
-        margin:0 auto;
-        margin-top: 5px;
-        padding: 0;
+            margin:0 auto;
+            margin-top: 5px;
+            padding: 0;
         }
+
         #custom-search-form .search-query {
-        padding-right: 3px;
-        padding-right: 4px \9;
-        padding-left: 3px;
-        padding-left: 4px \9;
-        /* IE7-8 doesn't have border-radius, so don't indent the padding */
-        margin-bottom: 0;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
-        margin:0 auto;
+            padding-right: 3px;
+            padding-right: 4px \9;
+            padding-left: 3px;
+            padding-left: 4px \9;
+            /* IE7-8 doesn't have border-radius, so don't indent the padding */
+            margin-bottom: 0;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            margin:0 auto;
         }
+
         #custom-search-form button {
-        border: 0;
-        background: none;
-        /** belows styles are working good */
-        padding: 2px 5px;
-        margin-top: 2px;
-        position: center;
-        /* IE7-8 doesn't have border-radius, so don't indent the padding */
-        margin-bottom: 0;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
-        margin-left: auto;
-        margin-right: auto;
-        margin:0 auto;
+            border: 0;
+            background: none;
+            /** belows styles are working good */
+            padding: 2px 5px;
+            margin-top: 2px;
+            position: center;
+            /* IE7-8 doesn't have border-radius, so don't indent the padding */
+            margin-bottom: 0;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            margin-left: auto;
+            margin-right: auto;
+            margin:0 auto;
         }
 
         .search-query:focus + button {
-        z-index: 3;
-        margin:0 auto;
+            z-index: 3;
+            margin:0 auto;
         }
+
         .searchinthemiddle {
-        margin:0 auto;
+            margin:0 auto;
         }
+
         .selectpicker {
         }
+
         .searchingfields {
-        text-align: center;
+            text-align: center;
         }
+
+        .hidden {
+        }
+
+        .container {
+            margin:0 auto;
+        }
+
+        .row {
+        }
+
+        .col {
+        }
+
     </style>
 </head>
 <body>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="maintitle">
-    <h>roomie</h>
-</div>
-<br>
-<br>
-<br>
-<br>
-<div class="searchingfields">
-    <select class="selectpicker" data-live-search="true" title="From" id="pick-from">
-        {% for row in rows %}
-            <option data-subtext={{row.area}}>{{row.name}}</option>
-        {% endfor %}
-    </select>
-
-    <select class="selectpicker" data-live-search="true" title="To" id="pick-to">
-        {% for row in rows %}
-            <option data-subtext={{row.area}}>{{row.name}}</option>
-        {% endfor %}
-    </select>
-    <button type="button" class="btn btn-default" aria-label="Left Align">
-        <!-- <a class="glyphicon glyphicon-search" aria-hidden="true" href="http://127.0.0.1:5000/"></a> -->
-        <a class="glyphicon glyphicon-search" id="searchbutton" aria-hidden="true"></a>
-    </button>
-
-</div>
-
-<!--
-<table class="table table-condensed">
-    <div class="firstrow">
-        <tr>
-            <th>Name</th>
-            <th>Capacity</th>
-            <th>Area</th>
-            <th>Occupation</th>
-        </tr>
+<div>
+    <div class="maintitle">
+        roomie
     </div>
-    <div class="otherrows">
-        {% for row in rows %}
-        <tr>
-            <td>    {{row.name}}</td>
-            <td>{{row.capacity}}</td>
-            <td>{{row.area}}</td>
-            <td>{{row.occupied}}</td>
-        </tr>
-        {% endfor %}
-    </div>
-</table>
 
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="searchingfields">
+        <select class="selectpicker" data-live-search="true" title="From" id="pick-from">
+            {% for row in rows %}
+                <option data-subtext={{row.area}}>{{row.name}}</option>
+            {% endfor %}
+        </select>
+
+        <select class="selectpicker" data-live-search="true" title="To" id="pick-to">
+            {% for row in rows %}
+                <option data-subtext={{row.area}}>{{row.name}}</option>
+            {% endfor %}
+        </select>
+        <button type="button" class="btn btn-default" aria-label="Left Align" id="searchbutton">
+            <div class="glyphicon glyphicon-search" aria-hidden="true"></div>
+        </button>
+    </div>
 <br>
 <br>
-<div class="searchinthemiddle">
-    <div class="container">
-	    <div class="row">
-            <div class="span12">
-                <form id="custom-search-form" action="/" method="get" class="form-search form-horizontal pull-right">
-                    <div class="input-append span12">
-                        <input type="text" name="searchParam" class="search-query" placeholder="Search">
-                        <button type="submit" class="btn"><i class="icon-search"></i></button>
-                    </div>
-                </form>
+    <div id="direction-details" class="hidden">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" id="direction-map" style="border: 1px solid red;">"Terkep"</div>
+                <div class="col-md-6" id="direction-text" style="border: 1px solid red;"></div>
             </div>
-	    </div>
+        </div>
     </div>
 </div>
--->
-<br>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
+
   <script type="text/javascript">
         function getQueryVariable(variable) {
             var query = window.location.search.substring(1);
@@ -206,17 +210,29 @@
         var addurl = '&searchTo=';
 
         $('#searchbutton').on('click', function (e) {
-            e.preventDefault();
             var searchingurl1 = initialurl.concat(from);
             var searchingurl2 = searchingurl1.concat(addurl);
             var searchingurl = searchingurl2.concat(to);
 
-            $.get(window.location.origin + searchingurl, function (d) {
-                console.log(d)
-            })
+            $.get(window.location.origin + searchingurl, function (path) {
+                var pathJson = JSON.parse(path);
+                console.log(path)
+                var content = "<ul class=\"list-group\">";
+                for (var item in pathJson) {
+                    content += "<li class=\"list-group-item\">" + pathJson[item] + "</li>";
+                    }
+                content += "</ul>"
+                console.log(content)
+
+                $('#direction-text').html(content);
+                $('#direction-map').html();
+                $('.maintitle').addClass('maintitle-small');
+            });
 
             console.log(from)
             console.log(to)
+
+            $('#direction-details').removeClass('hidden');
         });
         $('#pick-to').selectpicker('val', searchTo);
 
