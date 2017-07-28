@@ -8,3 +8,74 @@
 
 </body>
 </html>
+color: #2E122D;
+            background-color: rgba(192, 108, 132, 0.5);
+            background-image: url("static/forest.jpg");
+
+
+
+var fromx = Math.ceil(coords[0]*0.6)
+                var fromy = Math.ceil(coords[1]*0.6)
+                var tox = Math.ceil(coords[2]*0.6)
+                var toy = Math.ceil(coords[3]*0.6)
+                var i;
+                ctx.moveTo(fromx,fromy);
+                ctx.lineTo(Math.ceil(checkcoordsall[0]*0.6),Math.ceil(checkcoordsall[1]*0.6));
+                for (i = 0; i<checkcoordsall.length; i = (i+2)) {
+                    var pointx = checkcoordsall[i];
+                    var pointy = checkcoordsall[i+1];
+                    var point2x = checkcoordsall[i+2];
+                    var point2y = checkcoordsall[i+3];
+                    ctx.moveTo(Math.ceil(pointx*0.6),Math.ceil(pointy*0.6));
+                    ctx.lineTo(Math.ceil(point2x*0.6),Math.ceil(point2y*0.6));
+                };
+                ctx.moveTo(Math.ceil(checkcoordsall[checkcoordsall-2]*0.6),Math.ceil(checkcoordsall[checkcoordsall-1]*0.6));
+                ctx.lineTo(tox,toy);
+                ctx.stroke();
+
+
+var fromx = Math.ceil(coords[0]*0.6)
+                var fromy = Math.ceil(coords[1]*0.6)
+                var tox = Math.ceil(coords[2]*0.6)
+                var toy = Math.ceil(coords[3]*0.6)
+                var i;
+                ctx.moveTo(fromx,fromy);
+                ctx.lineTo(Math.ceil(checkcoordsall[0]*0.6),Math.ceil(checkcoordsall[1]*0.6));
+                for (i = 0; i<checkcoordsall.length; i = (i+2)) {
+                    var pointx = checkcoordsall[i];
+                    var pointy = checkcoordsall[i+1];
+                    var point2x = checkcoordsall[i+2];
+                    var point2y = checkcoordsall[i+3];
+                    ctx.moveTo(Math.ceil(pointx*0.6),Math.ceil(pointy*0.6));
+                    ctx.lineTo(Math.ceil(point2x*0.6),Math.ceil(point2y*0.6));
+                };
+                ctx.moveTo(Math.ceil(checkcoordsall[checkcoordsall-2]*0.6),Math.ceil(checkcoordsall[checkcoordsall-1]*0.6));
+                ctx.lineTo(tox,toy);
+                ctx.stroke();
+
+
+var from0 = dataJson.from0;
+                var from1 = dataJson.from1;
+                var from2 = dataJson.from2;
+                var from3 = dataJson.from3;
+                var to0 = dataJson.to0;
+                var to1 = dataJson.to1;
+                var to2 = dataJson.to2;
+                var to3 = dataJson.to3;
+
+def find_shortest_path(graph, start, end, path=[], totaldistance=0):
+    path = path + [start]
+    if start == end:
+        return path
+    if not graph.has_key(start):
+        return None
+    nodes = graph[start]
+    shortest = None
+    for node in nodes:
+        if node not in path:
+            newpath = find_shortest_path(graph, node, end, path, totaldistance + 1)
+            if newpath:
+                if not shortest or totaldistance < shortestdistance:
+                    shortest = newpath
+                    shortestdistance = totaldistance
+    return shortest
