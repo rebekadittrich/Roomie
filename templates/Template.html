@@ -132,12 +132,11 @@
         }
         @media(max-width:1200px) {
             #direction-map {
-                margin: 0 50px;
+                margin: 0;
             }
             #myCanvas {
                 width: 100%;
                 height: auto;
-                background-color:red;
             }
         }
 
@@ -438,9 +437,6 @@
                 ctx.stroke();
 
             };
-
-
-
 
             $.get(window.location.origin + searchingurl, function (data) {
                 dataJson = JSON.parse(data);
