@@ -417,6 +417,7 @@
                 console.log(checkcoordsall3);
 
                 ctx.lineWidth=3;
+                ctx.strokeStyle = '#EC2E53';
 
                 for (i = 0; i<checkcoordsall.length; i = (i+2)) {
                     var pointx = checkcoordsall[i];
@@ -426,13 +427,16 @@
                     ctx.moveTo(Math.ceil(pointx),Math.ceil(pointy));
                     ctx.lineTo(Math.ceil(point2x),Math.ceil(point2y));
                 };
+
                 ctx.stroke();
 
                 ctx.beginPath();
+                ctx.strokeStyle = '#EC2E53';
                 ctx.arc(fromx,fromy,2,0,2*Math.PI);
                 ctx.stroke();
 
                 ctx.beginPath();
+                ctx.strokeStyle = '#EC2E53';
                 ctx.arc(tox,toy,2,0,2*Math.PI);
                 ctx.stroke();
 
