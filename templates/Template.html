@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/css/bootstrap-select.min.css">
     <title>Roomie</title>
     <style>
         body {
+            background: linear-gradient(to left, #ff0000 50%, #0000ff 50%);
             color: #152235;
         }
 
@@ -205,10 +207,10 @@
         <br>
         <br>
         <br>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6" id="direction-text"></div>
-                <div class="col-md-6" id="direction-map">
+                <div class="col-xs-12 col-md-6" id="direction-text"></div>
+                <div class="col-xs-12 col-md-6" id="direction-map">
                     <canvas class="canvas"id="myCanvas" width=538 height="910px" style="border:0px solid #d3d3d3;"></canvas>
                     <br>
                 </div>
