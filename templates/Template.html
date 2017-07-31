@@ -172,17 +172,16 @@
     <br>
     <br>
     <br>
-
     <div class="searchingfields">
-        <select class="selectpicker" data-live-search="true" title="From" id="pick-from">
+        <select class="selectpicker" data-live-search="true" title="From" id="pick-from" data-size="9" showSubtext="True">
             {% for row in rows %}
-                <option data-subtext={{row.area}}>{{row.name}}</option>
+                <option data-subtext='{{row.area}}'>{{row.name}}</option>
             {% endfor %}
         </select>
 
-        <select class="selectpicker" data-live-search="true" title="To" id="pick-to">
+        <select class="selectpicker" data-live-search="true" title="To" id="pick-to" data-size="9" showSubtext="True">
             {% for row in rows %}
-                <option data-subtext={{row.area}}>{{row.name}}</option>
+                <option data-subtext='{{row.area}}'>{{row.name}}</option>
             {% endfor %}
         </select>
         <button type="button" class="btn btn-default" aria-label="Left Align" id="searchbutton">
@@ -379,7 +378,6 @@
                         }
                     }
                 }
-                ctx.lineWidth=3;
 
                 console.log(fromx);
                 console.log(fromy);
@@ -390,6 +388,14 @@
                 console.log(checkcoordsall2);
                 console.log(checkcoordsall3);
 
+                var gradient = ctx.createLinearGradient(0, 170, 170, 170);
+                gradient.addColorStop("0", "magenta");
+                gradient.addColorStop("0.5", "blue");
+                gradient.addColorStop(0.8, "yellow");
+                gradient.addColorStop("1.0", "red");
+
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth=3;
 
                 for (i = 0; i<checkcoordsall.length; i = (i+2)) {
                     var pointx = checkcoordsall[i];
