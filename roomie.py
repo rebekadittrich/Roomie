@@ -144,49 +144,22 @@ def route():
         graph[line.fromid].append(line.toid)
     sol = find_shortest_path(graph, from_room.nearestcheckpoint, to_room.nearestcheckpoint)
     path = []
-    coords = []
-    from0 = []
-    from1a = []
-    from1b = []
-    from2 = []
-    from3 = []
-    to0 = []
-    to1a = []
-    to1b = []
-    to2 = []
-    to3 = []
+
     checkcoordsall = []
     checkcoordsall0 = []
-    checkcoordsall1a = []
-    checkcoordsall1b = []
+    checkcoordsall1 = []
     checkcoordsall2 = []
     checkcoordsall3 = []
+
     print sol
 
-    if from_room.floor == 0:
-        from0 = [from_room.coordx, from_room.coordy]
-        checkcoordsall0.append(from_room.coordx)
-        checkcoordsall0.append(from_room.coordy)
-    elif from_room.floor == 1 and from_room.id <= 19:
-        from1a = [from_room.coordx, from_room.coordy]
-        checkcoordsall1a.append(from_room.coordx)
-        checkcoordsall1a.append(from_room.coordy)
-    elif from_room.floor == 1 and from_room.id > 19:
-        from1b = [from_room.coordx, from_room.coordy]
-        checkcoordsall1b.append(from_room.coordx)
-        checkcoordsall1b.append(from_room.coordy)
-    elif from_room.floor == 2:
-        from2 = [from_room.coordx, from_room.coordy]
-        checkcoordsall2.append(from_room.coordx)
-        checkcoordsall2.append(from_room.coordy)
-    elif from_room.floor == 3:
-        from3 = [from_room.coordx, from_room.coordy]
-        checkcoordsall3.append(from_room.coordx)
-        checkcoordsall3.append(from_room.coordy)
+    checkcoordsall.append(from_room.coordx)
+    checkcoordsall.append(from_room.coordy)
 
     for i in range(0, len(sol) - 1):
         steps = Line.query.filter_by(fromid=sol[i], toid=sol[i+1]).first()
         path.append(str(steps.desc))
+
     for i in range(0, len(sol)):
         checkcoords = Checkpoint.query.filter_by(id=sol[i]).first()
         checkcoordsall.append(checkcoords.pointx)
@@ -194,67 +167,29 @@ def route():
         if checkcoords.floor == 0:
             checkcoordsall0.append(checkcoords.pointx)
             checkcoordsall0.append(checkcoords.pointy)
-        elif checkcoords.floor == 1 and checkcoords.id > 17:
-            checkcoordsall1a.append(checkcoords.pointx)
-            checkcoordsall1a.append(checkcoords.pointy)
-        elif checkcoords.floor == 1 and checkcoords.id <= 17:
-            checkcoordsall1b.append(checkcoords.pointx)
-            checkcoordsall1b.append(checkcoords.pointy)
+        elif checkcoords.floor == 1:
+            checkcoordsall1.append(checkcoords.pointx)
+            checkcoordsall1.append(checkcoords.pointy)
         elif checkcoords.floor == 2:
             checkcoordsall2.append(checkcoords.pointx)
             checkcoordsall2.append(checkcoords.pointy)
         else:
             checkcoordsall3.append(checkcoords.pointx)
             checkcoordsall3.append(checkcoords.pointy)
+
+    checkcoordsall.append(to_room.coordx)
+    checkcoordsall.append(to_room.coordy)
     if from_room.nearestcheckpoint == to_room.nearestcheckpoint:
         path = ["You are almost there"]
 
-    if to_room.floor == 0:
-        to0 = [to_room.coordx, to_room.coordy]
-        checkcoordsall0.append(to_room.coordx)
-        checkcoordsall0.append(to_room.coordy)
-    elif to_room.floor == 1 and to_room.id <= 19:
-        to1a = [to_room.coordx, to_room.coordy]
-        checkcoordsall1a.append(to_room.coordx)
-        checkcoordsall1a.append(to_room.coordy)
-    elif to_room.floor == 1 and to_room.id > 19:
-        to1b = [to_room.coordx, to_room.coordy]
-        checkcoordsall1b.append(to_room.coordx)
-        checkcoordsall1b.append(to_room.coordy)
-    elif to_room.floor == 2:
-        to2 = [to_room.coordx, to_room.coordy]
-        checkcoordsall2.append(to_room.coordx)
-        checkcoordsall2.append(to_room.coordy)
-    elif to_room.floor == 3:
-        to3 = [to_room.coordx, to_room.coordy]
-        checkcoordsall3.append(to_room.coordx)
-        checkcoordsall3.append(to_room.coordy)
-
-    fromfloor = from_room.floor
-    print "all0" + str(checkcoordsall0)
-    print "all1" + str(checkcoordsall1a)
-    print "all2" + str(checkcoordsall2)
-    print "all3" + str(checkcoordsall3)
     return json.dumps({
         "path": path,
         "coords": coords,
-        "from0": from0,
-        "from1a": from1a,
-        "from1b": from1b,
-        "from2": from2,
-        "from3": from3,
-        "to0": to0,
-        "to1a": to1a,
-        "to1b": to1b,
-        "to2": to2,
-        "to3": to3,
         "checkcoordsall": checkcoordsall,
         "checkcoordsall0": checkcoordsall0,
-        "checkcoordsall1a": checkcoordsall1a,
-        "checkcoordsall1b": checkcoordsall1b,
+        "checkcoordsall1": checkcoordsall1,
         "checkcoordsall2": checkcoordsall2,
         "checkcoordsall3": checkcoordsall3,
-        "fromfloor": fromfloor,
     })
 
 shortestdistance = 100000000

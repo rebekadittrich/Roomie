@@ -79,3 +79,508 @@ def find_shortest_path(graph, start, end, path=[], totaldistance=0):
                     shortest = newpath
                     shortestdistance = totaldistance
     return shortest
+
+
+
+fiosdnfsndofsndos
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/css/bootstrap-select.min.css">
+    <title>Roomie</title>
+    <style>
+        body {
+            color: #152235;
+        }
+
+        @font-face {
+            font-family: ralewayprezi-black-v01-webfont;
+            src: url("static/ralewayprezi-black-v01-webfont.woff");
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 15 px solid black;
+            background-color: #C06C84;
+            background-color: rgba(192, 108, 132, 0.65);
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 60 px;
+        }
+
+        th {
+            height: 50px;
+        }
+
+        .firstrow {
+            text-align: center;
+            background-color: rgb(125, 5, 51);
+        }
+
+        .otherrows {
+            text-align: center;
+        }
+
+        th, td {
+            padding: 8px;
+        }
+
+        tr:hover{
+            background-color: rgba(252, 108, 71, 0.55)
+        }
+
+        .maintitle {
+            text-align: center;
+            margin-top: 60px;
+            font-family: Bungee-Shade;
+            font-size: 60px;
+            margin-left: auto;
+        }
+
+        .maintitle-small {
+            transition: font-size .5s;
+            font-size: 24px;
+            text-align: left;
+            margin-left: 40px;
+        }
+
+        #custom-search-form {
+            margin:0 auto;
+            margin-top: 5px;
+            padding: 0;
+        }
+
+        #custom-search-form .search-query {
+            padding-right: 3px;
+            padding-right: 4px \9;
+            padding-left: 3px;
+            padding-left: 4px \9;
+            /* IE7-8 doesn't have border-radius, so don't indent the padding */
+            margin-bottom: 0;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            margin:0 auto;
+        }
+
+        #custom-search-form button {
+            border: 0;
+            background: none;
+            /** belows styles are working good */
+            padding: 2px 5px;
+            margin-top: 2px;
+            position: center;
+            /* IE7-8 doesn't have border-radius, so don't indent the padding */
+            margin-bottom: 0;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            margin-left: auto;
+            margin-right: auto;
+            margin:0 auto;
+        }
+
+        .search-query:focus + button {
+            z-index: 3;
+            margin:0 auto;
+        }
+
+        .searchinthemiddle {
+            margin:0 auto;
+        }
+
+        .selectpicker {
+        }
+
+        .searchingfields {
+            text-align: center;
+        }
+
+        .hidden {
+        }
+
+        .container {
+            margin:0 auto;
+        }
+
+        .row {
+        }
+
+        .col {
+        }
+        .canvas {
+            width = 100%;
+            height = 100%;
+        }
+
+        @media(max-width:1200px) {
+            #direction-map {
+                margin: 0;
+            }
+            #myCanvas {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <div class="maintitle">
+        roomie
+    </div>
+
+    <div class="hidden">
+        <img id="myImg" src="static/Artboard.png" width="507px" height="328px">
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="searchingfields">
+        <select class="selectpicker" data-live-search="true" title="From" id="pick-from">
+            {% for row in rows %}
+                <option data-subtext={{row.area}}>{{row.name}}</option>
+            {% endfor %}
+        </select>
+
+        <select class="selectpicker" data-live-search="true" title="To" id="pick-to">
+            {% for row in rows %}
+                <option data-subtext={{row.area}}>{{row.name}}</option>
+            {% endfor %}
+        </select>
+        <button type="button" class="btn btn-default" aria-label="Left Align" id="searchbutton">
+            <div class="glyphicon glyphicon-search" aria-hidden="true"></div>
+        </button>
+    </div>
+<br>
+<br>
+    <div id="direction-details" class="hidden">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" id="direction-map">
+                    <canvas class="canvas"id="myCanvas3" width=507 height="328px" style="border:1px solid #d3d3d3;"></canvas>
+                    <canvas class="canvas"id="myCanvas2" width=507 height="328px" style="border:1px solid #d3d3d3;"></canvas>
+                    <canvas class="canvas"id="myCanvas1" width=507 height="328px" style="border:1px solid #d3d3d3;"></canvas>
+                    <canvas class="canvas"id="myCanvas0" width=507 height="328px" style="border:1px solid #d3d3d3;"></canvas>
+                    <br>
+                    <button type="button" class="btn btn-default" id="floor0">G</button>
+                    <button type="button" class="btn btn-default" id="floor1">1</button>
+                    <button type="button" class="btn btn-default" id="floor2">2</button>
+                    <button type="button" class="btn btn-default" id="floor3">3</button>
+                </div>
+                <div class="col-md-6" id="direction-text"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
+
+  <script type="text/javascript">
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+            }
+        return(false);
+        }
+        searchTo = getQueryVariable("searchTo")
+
+        var from = 'Eames';
+        var to = 'Spline';
+
+        console.log(searchTo);
+
+        // console.log(window.location.search)
+
+        $('.selectpicker').selectpicker({
+          size: 4
+        });
+
+        $('#pick-from').on('change', function () {
+            from = $(this).find("option:selected").val();
+        });
+
+        $('#pick-to').on('change', function () {
+            to = $(this).find("option:selected").val();
+        });
+
+        var initialurl = '/direction/?searchFrom=';
+        var addurl = '&searchTo=';
+
+        $('#searchbutton').on('click', function (e) {
+            var searchingurl1 = initialurl.concat(from);
+            var searchingurl2 = searchingurl1.concat(addurl);
+            var searchingurl = searchingurl2.concat(to);
+
+            var dataJson = {};
+            var pathJson = [];
+            var coords = [];
+
+            var checkcoordsall = [];
+            var checkcoordsall0 = [];
+            var checkcoordsall1a = [];
+            var checkcoordsall1b = [];
+            var checkcoordsall2 = [];
+            var checkcoordsall3 = [];
+            var fromfloor;
+            var from0 = [];
+            var from1a = [];
+            var from1b = [];
+            var from2 = [];
+            var from3 = [];
+            var to0 = [];
+            var to1a = [];
+            var to1b = [];
+            var to2 = [];
+            var to3 = [];
+
+            function showfloor0() {
+
+                var i;
+                var checkcoordsall0 = dataJson.checkcoordsall0;
+                var from0 = dataJson.from0;
+                var to0 = dataJson.to0;
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                var img = document.getElementById("myImg");
+                var fromx = Math.ceil(from0[0]*0.6)
+                var fromy = Math.ceil(from0[1]*0.6)
+                var tox = Math.ceil(to0[0]*0.6)
+                var toy = Math.ceil(to0[1]*0.6)
+                ctx.drawImage(img, 0, 0, 507, 328);
+
+
+                ctx.clearRect(0, 0, c.width, c.height);
+                c.width = c.width
+                ctx.drawImage(img, 0, 0, 507, 328);
+                ctx.lineWidth=3;
+
+                for (i = 0; i<checkcoordsall0.length; i = (i+2)) {
+                    var pointx = checkcoordsall0[i];
+                    var pointy = checkcoordsall0[i+1];
+                    var point2x = checkcoordsall0[i+2];
+                    var point2y = checkcoordsall0[i+3];
+                    ctx.moveTo(Math.ceil(pointx*0.6),Math.ceil(pointy*0.6));
+                    ctx.lineTo(Math.ceil(point2x*0.6),Math.ceil(point2y*0.6));
+                };
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(fromx,fromy,2,0,2*Math.PI);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(tox,toy,2,0,2*Math.PI);
+                ctx.stroke();
+
+            };
+
+            function showfloor1() {
+                var i;
+                var checkcoordsall1a = dataJson.checkcoordsall1a;
+                var checkcoordsall1b = dataJson.checkcoordsall1b;
+                var from1a = dataJson.from1a;
+                var to1a = dataJson.to1a;
+                var from1b = dataJson.from1b;
+                var to1b = dataJson.to1b;
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                var img = document.getElementById("myImg");
+                var fromxa = Math.ceil(from1a[0]*0.6)
+                var fromya = Math.ceil(from1a[1]*0.6)
+                var toxa = Math.ceil(to1a[0]*0.6)
+                var toya = Math.ceil(to1a[1]*0.6)
+                var fromxb = Math.ceil(from1b[0]*0.6)
+                var fromyb = Math.ceil(from1b[1]*0.6)
+                var toxb = Math.ceil(to1b[0]*0.6)
+                var toyb = Math.ceil(to1b[1]*0.6)
+                ctx.drawImage(img, 0, 0, 507, 328);
+
+                ctx.clearRect(0, 0, c.width, c.height);
+                c.width = c.width
+                ctx.drawImage(img, 0, 0, 507, 328);
+                ctx.lineWidth=3;
+
+                for (i = 0; i<checkcoordsall1a.length; i = (i+2)) {
+                    var pointxa = checkcoordsall1a[i];
+                    var pointya = checkcoordsall1a[i+1];
+                    var point2xa = checkcoordsall1a[i+2];
+                    var point2ya = checkcoordsall1a[i+3];
+                    ctx.moveTo(Math.ceil(pointxa*0.6),Math.ceil(pointya*0.6));
+                    ctx.lineTo(Math.ceil(point2xa*0.6),Math.ceil(point2ya*0.6));
+                };
+                ctx.stroke();
+
+                for (i = 0; i<checkcoordsall1b.length; i = (i+2)) {
+                    var pointxb = checkcoordsall1b[i];
+                    var pointyb = checkcoordsall1b[i+1];
+                    var point2xb = checkcoordsall1b[i+2];
+                    var point2yb = checkcoordsall1b[i+3];
+                    ctx.moveTo(Math.ceil(pointxb*0.6),Math.ceil(pointyb*0.6));
+                    ctx.lineTo(Math.ceil(point2xb*0.6),Math.ceil(point2yb*0.6));
+                };
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(fromxa,fromya,2,0,2*Math.PI);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(toxa,toya,2,0,2*Math.PI);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(fromxb,fromyb,2,0,2*Math.PI);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(toxb,toyb,2,0,2*Math.PI);
+                ctx.stroke();
+
+                };
+            function showfloor2() {
+                var i;
+                var checkcoordsall2 = dataJson.checkcoordsall2;
+                var from2 = dataJson.from2;
+                var to2 = dataJson.to2;
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                var img = document.getElementById("myImg");
+                var fromx = Math.ceil(from2[0]*0.6)
+                var fromy = Math.ceil(from2[1]*0.6)
+                var tox = Math.ceil(to2[0]*0.6)
+                var toy = Math.ceil(to2[1]*0.6)
+                ctx.drawImage(img, 0, 0, 507, 328);
+
+                ctx.clearRect(0, 0, c.width, c.height);
+                c.width = c.width
+                ctx.drawImage(img, 0, 0, 507, 328);
+                ctx.lineWidth=3;
+
+                for (i = 0; i<checkcoordsall2.length; i = (i+2)) {
+                    var pointx = checkcoordsall2[i];
+                    var pointy = checkcoordsall2[i+1];
+                    var point2x = checkcoordsall2[i+2];
+                    var point2y = checkcoordsall2[i+3];
+                    ctx.moveTo(Math.ceil(pointx*0.6),Math.ceil(pointy*0.6));
+                    ctx.lineTo(Math.ceil(point2x*0.6),Math.ceil(point2y*0.6));
+                };
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(fromx,fromy,2,0,2*Math.PI);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(tox,toy,2,0,2*Math.PI);
+                ctx.stroke();
+
+            };
+            function showfloor3() {
+                var i;
+                var checkcoordsall3 = dataJson.checkcoordsall3;
+                var from3 = dataJson.from3;
+                var to3 = dataJson.to3;
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                var img = document.getElementById("myImg");
+                var fromx = Math.ceil(from3[0]*0.6)
+                var fromy = Math.ceil(from3[1]*0.6)
+                var tox = Math.ceil(to3[0]*0.6)
+                var toy = Math.ceil(to3[1]*0.6)
+                ctx.drawImage(img, 0, 0, 507, 328);
+
+                ctx.clearRect(0, 0, c.width, c.height);
+                c.width = c.width
+                ctx.drawImage(img, 0, 0, 507, 328);
+                ctx.lineWidth=3;
+
+                for (i = 0; i<checkcoordsall3.length; i = (i+2)) {
+                    var pointx = checkcoordsall3[i];
+                    var pointy = checkcoordsall3[i+1];
+                    var point2x = checkcoordsall3[i+2];
+                    var point2y = checkcoordsall3[i+3];
+                    ctx.moveTo(Math.ceil(pointx*0.6),Math.ceil(pointy*0.6));
+                    ctx.lineTo(Math.ceil(point2x*0.6),Math.ceil(point2y*0.6));
+                };
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(fromx,fromy,2,0,2*Math.PI);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(tox,toy,2,0,2*Math.PI);
+                ctx.stroke();
+
+            };
+
+            $.get(window.location.origin + searchingurl, function (data) {
+                dataJson = JSON.parse(data);
+                pathJson = dataJson.path;
+                coords = dataJson.coords;
+
+
+                checkcoordsall = dataJson.checkcoordsall;
+                checkcoordsall0 = dataJson.checkcoordsall0;
+                checkcoordsall1a = dataJson.checkcoordsall1a;
+                checkcoordsall1b = dataJson.checkcoordsall1b;
+                checkcoordsall2 = dataJson.checkcoordsall2;
+                checkcoordsall3 = dataJson.checkcoordsall3;
+                fromfloor = dataJson.fromfloor;
+                console.log(pathJson, coords, checkcoordsall, checkcoordsall0, checkcoordsall1a, checkcoordsall1b, checkcoordsall2, checkcoordsall3, fromfloor);
+                var content = "<ul class=\"list-group\">";
+                for (var item in pathJson) {
+                    content += "<li class=\"list-group-item\">" + pathJson[item] + "</li>";
+                    }
+                content += "</ul>"
+                console.log(content)
+
+                if (fromfloor == 0) {
+                   showfloor0();
+                } else if (fromfloor == 1) {
+                   showfloor1();
+                } else if (fromfloor == 2) {
+                   showfloor2();
+                } else if (fromfloor == 3) {
+                   showfloor3();
+                }
+
+                $('#direction-text').html(content);
+                $('#direction-map').html();
+
+                $('.maintitle').addClass('maintitle-small');
+            });
+
+            $('#floor0').on('click', showfloor0);
+            $('#floor1').on('click', showfloor1);
+            $('#floor2').on('click', showfloor2);
+            $('#floor3').on('click', showfloor3);
+
+            console.log(from)
+            console.log(to)
+
+            $('#direction-details').removeClass('hidden');
+        });
+        $('#pick-to').selectpicker('val', searchTo);
+        window.onload = function() {
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            var img = document.getElementById("myImg");
+            ctx.clearRect(0, 0, c.width, c.height);
+            ctx.drawImage(img, 0, 0, 507, 328);
+        };
