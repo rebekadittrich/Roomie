@@ -41,6 +41,7 @@
 
         th, td {
             padding: 8px;
+            padding:0 150px 0 15px;
         }
 
         tr:hover{
@@ -58,8 +59,6 @@
         .maintitle-small {
             transition: font-size .5s;
             font-size: 24px;
-            text-align: left;
-            margin-left: 40px;
         }
 
         #custom-search-form {
@@ -112,6 +111,12 @@
 
         .searchingfields {
             text-align: center;
+
+        }
+
+        .searchingfields-left {
+            text-align: left;
+            margin-left: 40px;
         }
 
         .hidden {
@@ -141,63 +146,72 @@
             }
         }
 
+        .header {
+        background-color: #152235;
+        color: #FFFFFF;
+        }
+
     </style>
 </head>
 <body>
 <div>
-    <div class="maintitle">
-        roomie
-    </div>
+    <div class="header">
+        <br>
+        <br>
+        <div class="maintitle">
+            roomie
+        </div>
 
-    <div class="hidden">
-        <img id="myImg" src="static/fullmap0.png">
-        <img id="floor0" src="static/floor0.png">
-        <img id="floor01" src="static/floor01.png">
-        <img id="floor02" src="static/floor02.png">
-        <img id="floor03" src="static/floor03.png">
-        <img id="floor012" src="static/floor012.png">
-        <img id="floor013" src="static/floor013.png">
-        <img id="floor023" src="static/floor023.png">
-        <img id="floor0123" src="static/floor0123.png">
-        <img id="floor1" src="static/floor1.png">
-        <img id="floor12" src="static/floor12.png">
-        <img id="floor13" src="static/floor13.png">
-        <img id="floor123" src="static/floor123.png">
-        <img id="floor2" src="static/floor2.png">
-        <img id="floor23" src="static/floor23.png">
-        <img id="floor3" src="static/floor3.png">
+        <div class="hidden">
+            <img id="myImg" src="static/fullmap0.png">
+            <img id="floor0" src="static/floor0.png">
+            <img id="floor01" src="static/floor01.png">
+            <img id="floor02" src="static/floor02.png">
+            <img id="floor03" src="static/floor03.png">
+            <img id="floor012" src="static/floor012.png">
+            <img id="floor013" src="static/floor013.png">
+            <img id="floor023" src="static/floor023.png">
+            <img id="floor0123" src="static/floor0123.png">
+            <img id="floor1" src="static/floor1.png">
+            <img id="floor12" src="static/floor12.png">
+            <img id="floor13" src="static/floor13.png">
+            <img id="floor123" src="static/floor123.png">
+            <img id="floor2" src="static/floor2.png">
+            <img id="floor23" src="static/floor23.png">
+            <img id="floor3" src="static/floor3.png">
+        </div>
+        <br>
+        <div class="searchingfields">
+            <select class="selectpicker" data-live-search="true" title="From" id="pick-from" data-size="9" showSubtext="True">
+                {% for row in rows %}
+                    <option data-subtext='{{row.area}}'>{{row.name}}</option>
+                {% endfor %}
+            </select>
+            <select class="selectpicker" data-live-search="true" title="To" id="pick-to" data-size="9" showSubtext="True">
+                {% for row in rows %}
+                    <option data-subtext='{{row.area}}'>{{row.name}}</option>
+                {% endfor %}
+            </select>
+            <button type="button" class="btn btn-default" aria-label="Left Align" id="searchbutton">
+                <div class="glyphicon glyphicon-search" aria-hidden="true"></div>
+            </button>
+        </div>
+        <br>
+        <br>
+        <br>
     </div>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="searchingfields">
-        <select class="selectpicker" data-live-search="true" title="From" id="pick-from" data-size="9" showSubtext="True">
-            {% for row in rows %}
-                <option data-subtext='{{row.area}}'>{{row.name}}</option>
-            {% endfor %}
-        </select>
-
-        <select class="selectpicker" data-live-search="true" title="To" id="pick-to" data-size="9" showSubtext="True">
-            {% for row in rows %}
-                <option data-subtext='{{row.area}}'>{{row.name}}</option>
-            {% endfor %}
-        </select>
-        <button type="button" class="btn btn-default" aria-label="Left Align" id="searchbutton">
-            <div class="glyphicon glyphicon-search" aria-hidden="true"></div>
-        </button>
-    </div>
-<br>
 <br>
     <div id="direction-details" class="hidden">
+        <br>
+        <br>
+        <br>
         <div class="container">
             <div class="row">
+                <div class="col-md-6" id="direction-text"></div>
                 <div class="col-md-6" id="direction-map">
-                    <canvas class="canvas"id="myCanvas" width=538 height="910px" style="border:1px solid #d3d3d3;"></canvas>
+                    <canvas class="canvas"id="myCanvas" width=538 height="910px" style="border:0px solid #d3d3d3;"></canvas>
                     <br>
                 </div>
-                <div class="col-md-6" id="direction-text"></div>
             </div>
         </div>
     </div>
