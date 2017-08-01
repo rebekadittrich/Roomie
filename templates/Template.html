@@ -246,11 +246,15 @@
         return(false);
         }
         searchTo = getQueryVariable("searchTo")
+        searchFrom = getQueryVariable("searchFrom")
 
-        var from = 'Eames';
-        var to = 'Spline';
+        var from = searchFrom || 'Eames';
+        var to = searchTo || 'Spline';
 
         console.log(searchTo);
+
+        $('#pick-to').selectpicker('val', searchTo);
+        $('#pick-from').selectpicker('val', searchFrom);
 
         // console.log(window.location.search)
 
@@ -447,7 +451,14 @@
 
             $('#direction-details').removeClass('hidden');
         });
-        $('#pick-to').selectpicker('val', searchTo);
+
+
+        if (searchFrom && searchTo) {
+            console.log("clicked")
+            $('#searchbutton').click();
+        }
+
+
         window.onload = function() {
             var c = document.getElementById("myCanvas");
             var ctx = c.getContext("2d");
