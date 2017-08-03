@@ -27,7 +27,7 @@ class Room(db.Model):
         self.floor = floor
 
     def __repr__(self):
-        return 'Room {name}'.format(
+        return '{name}'.format(
             name=self.name
         )
     def to_dict(self):
