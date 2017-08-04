@@ -31,7 +31,7 @@ db.session.add(Room('Totoro', 'Bento', 14, 67, 584, 1))
 db.session.add(Room('Sangaku', 'Bento', 17, 73, 627, 1))
 db.session.add(Room('Donkey Kong', 'Bento', 14, 88, 612, 1))
 db.session.add(Room('Fuji', 'Bento', 16, 162, 642, 1))
-db.session.add(Room('Stretch', 'Values', 30, 205, 372, 3))
+db.session.add(Room('Stretch', 'Values', 30, 132, 252, 3))
 
 db.session.commit()
 
